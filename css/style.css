@@ -1,0 +1,21 @@
+/* Sets the background color for the body of the page */
+body {
+	background-color: #FFFFCC;
+}
+/* Aligns the text of GeeMail at the top to center*/
+h1 {
+	text-align: center;
+}
+/* Creates the border around the table and all sections*/
+table, th, td {
+	border: 1px solid black;
+	border-collapse: collapse;
+}
+/* Sets the background color of the table headers*/
+th {
+	background-color: #E2E2DD;
+}
+/* Sets the padding around the table headers & sections */
+th, td {
+	padding: 5px;
+}
