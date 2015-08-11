@@ -7,11 +7,57 @@
     window.onload = function(){
         // ALL OF YOUR JAVASCRIPT CODE SHOULD GO HERE. 
         // We have to use window.onload so your JavaScript doesn't execute until the page has loaded and all HTML has been downloaded to your browser
+        
         // Header
         title.innerHTML = "Welcome to GeeMail!"
-        var header = document.getElementById("header");
-     	function inbox(geemail) {}
-     };
+        var table = document.getElementById("tablebody");
+     	function inbox(geemail) {
+     		var content = document.getElementById("tablebody");
+     		
+     		// Creates the row for each email
+     		var row = document.createElement("tr");
+     		row.className = ("row");
+     		geemailContent.appendChild(row);
+     		
+     		// Used to generate the info for date column
+     		var date = document.createElement("td");
+        	date.className = ("date");
+        	date.innerHTML = geemail.date;
+        	row.appendChild(date);
+        	
+        	// Used to generate the info for the sender column
+     		var sender = document.createElement("td");
+     		sender.className = ("sender");
+        	sender.innerHTML = geemail.sender;
+        	row.appendChild(sender);
+        	
+        	// Used to generate the info for the subject column
+        	var subject = document.createElement("td");
+        	subject.className = ("subject");
+        	subject.innerHTML = geemail.subject;
+        	row.appendChild(subject);
+
+        	// Used to generate the info for the body column
+        	var body = document.createElement("td");
+        	body.className = ("body");
+        	body.innerHTML = geemail.body;
+        	row.appendChild(body);
+     	}
+
+     	function newMail(){
+          var newGeemail = getNewMessage();
+          inbox(newGeemail);
+          geemailsNum++;
+          inboxNumber.innerHTML = geemailsNum;
+    	}
+
+      setInterval(newMail, 5000);
+        inboxNumber.innerHTML = geemailsNum;
+        
+        for(var i = 0; i < window.geemails.length; i++) {
+          inbox(window.geemails[i]);
+        };
+    };
      
     </script>
 	</head>
@@ -22,12 +68,16 @@
 		</div>
 		<h4>Inbox Count:</h4>
 		<table style="width:100%"; cellspacing="10">
-			<tr>
-				<th>Received </br> On:</th>
-				<th>Sender:</th>
-				<th>Subject:</th>
-				<th>Body</th>
-			</tr>
+			<thead>
+				<tr>
+					<th id="date">Received </br> On:</th>
+					<th id="sender">Sender:</th>
+					<th id="subject">Subject:</th>
+					<th id="body">Body</th>
+				</tr>
+			</thead>
+			<tbody id="tablebody">
+			</tbody>
 		</div>
 	</body>
 </html>
