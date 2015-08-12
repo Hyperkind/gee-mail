@@ -45,27 +45,27 @@
      	}
 
      	function newMail(){
-          var newGeemail = getNewMessage();
-          inbox(newGeemail);
-          geemailsNum++;
-          inboxNumber.innerHTML = geemailsNum;
+            var newGeemail = getNewMessage();
+            inbox(newGeemail);
+            geemailsNum++;
+            inboxNumber.innerHTML = geemailsNum;
     	}
 
-      setInterval(newMail, 5000);
-        inboxNumber.innerHTML = geemailsNum;
+        setInterval(newMail, 5000);
+            inboxNumber.innerHTML = geemailsNum;
         
         for(var i = 0; i < window.geemails.length; i++) {
-          inbox(window.geemails[i]);
+            inbox(window.geemails[i]);
         };
     };
      
     </script>
 	</head>
-	<body>
 
+	<body>
 		<div class="container" id="main">
-			<div id="title">
-		</div>
+		    <div id="title">
+	        </div>
 		<h4>Inbox Count:</h4>
 		<table style="width:100%"; cellspacing="10">
 			<thead>
