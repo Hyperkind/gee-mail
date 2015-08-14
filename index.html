@@ -3,11 +3,15 @@
 		<title> Gee-Mail </title>
 		<script src="js/mail-generator.js"></script>
 		<link href="css/style.css" rel="stylesheet" media="screen">
+        <link rel = "shortcut icon" href="http://icons.iconarchive.com/icons/dtafalonso/android-lollipop/512/Gmail-icon.png">
     <script>
     window.onload = function(){
         // ALL OF YOUR JAVASCRIPT CODE SHOULD GO HERE. 
         // We have to use window.onload so your JavaScript doesn't execute until the page has loaded and all HTML has been downloaded to your browser
-        
+        // Loads 10 initial GeeMail messages
+        for(var i = 0; i < window.geemails.length; i++) {
+            inbox(window.geemails[i]);
+        };
         // Header
         title.innerHTML = "Welcome to GeeMail!"
         var table = document.getElementById("tablebody");
@@ -50,13 +54,9 @@
             geemailsNum++;
             inboxNumber.innerHTML = geemailsNum;
     	}
-
+        // Generates a new email every 5 seconds
         setInterval(newMail, 5000);
             inboxNumber.innerHTML = geemailsNum;
-        
-        for(var i = 0; i < window.geemails.length; i++) {
-            inbox(window.geemails[i]);
-        };
     };
      
     </script>
@@ -70,10 +70,11 @@
 		<table style="width:100%"; cellspacing="10">
 			<thead>
 				<tr>
-					<th id="date">Received </br> On:</th>
+               
+ 					<th id="date">Received </br> On:</th>
 					<th id="sender">Sender:</th>
 					<th id="subject">Subject:</th>
-					<th id="body">Body</th>
+					<th id="body">Body:</th>
 				</tr>
 			</thead>
 			<tbody id="tablebody">
