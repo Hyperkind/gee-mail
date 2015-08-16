@@ -17,7 +17,6 @@
      		// Creates the row for each email
      		var row = document.createElement("tr");
      		row.className = ("row");
-            // Adds the function to doubleclick an email to view the body of the message
             row.ondblclick = function(){
                 var bodyRow = document.getElementById("rowBody" + index);
                 if (bodyRow.style.display == "none"){
@@ -46,25 +45,22 @@
         	subject.innerHTML = geemail.subject;
         	row.appendChild(subject);
 
-            // Creates the body row for each email message
             var row2 = document.createElement("tr");
             row2.id = "rowBody" + index;
             row2.style.display = "none";
             content.appendChild(row2);
 
-        	// Generates the info for the body column
+        	// Used to generate the info for the body column
         	var body = document.createElement("td");
             body.colSpan = 3;
         	body.className = ("body");
         	body.innerHTML = geemail.body;
         	row2.appendChild(body);
 
-            // This is for the inbox count
             var inboxCount = document.getElementById("inboxNumber");
             inboxCount.innerHTML = "Inbox Count: " + window.geemails.length;
      	}
 
-            // Function to get new messages
      	function newMail(){
             var newGeemail = getNewMessage();
             window.geemails.push(newGeemail);
@@ -86,11 +82,11 @@
 	<body>
 		<div class="container" id="main">
             <div class="icon">
-                <img class="centered" src="http://icons.iconarchive.com/icons/dtafalonso/android-lollipop/512/Gmail-icon.png" />
+            <img class="centered" src="http://icons.iconarchive.com/icons/dtafalonso/android-lollipop/512/Gmail-icon.png" />
             </div>
 		    <div id="title" class="title">Welcome to GeeMail!</div>
 		<h4 id="inboxNumber">Inbox Count:</h4>
-		<table style="width:80%" cellspacing="10">
+		<table style="width:100%" cellspacing="10">
 			<thead>
 				<tr>
  					<th id="date">Received </br> On:</th>
