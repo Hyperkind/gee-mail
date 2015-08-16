@@ -1,40 +1,45 @@
 /* Sets the background color for the body of the page */
 body {
-	background-image: url("http://www.desktopwallpaperhd.net/wallpapers/11/d/wallpaper-abstract-clean-115181.jpg");
-	background-repeat: repeat-x;
+	background-color: #C2E0FF;
 }
-/* Aligns the text of GeeMail at the top to center*/
-h1 {
-	text-align: center;
-}
+
+/* Centers the table on the page*/
 table {
 	margin-left: auto;
 	margin-right: auto;
+	background-color: #FFFFFF;
 }
+
 /* Creates the border around the table and all sections*/
 table, th, td {
 	border: 1px solid black;
 	border-collapse: collapse;
 }
-/* Sets the background color of the table headers*/
-th {
-	background-color: #FFFFFF;
-}
-/* Sets the padding around the table headers & sections */
-th, td {
+
+/* Sets the padding around the email rows */
+td {
 	padding: 5px;
 }
 
-h4 {
-	font-size: 20;
+/* Sets the padding around the table header */
+th {
+	padding: 10px;
 }
 
+/* Sets the font style for the inbox count */
+#inboxNumber {
+	font-size: 20;
+	font-weight:bold;
+}
+
+/* Sets the font style for the title */
 .title {
-	font-size: 24;
+	font-size: 30;
 	font-weight: bold;
 	text-align: center;
 }
 
+/* Centers the GeeMail logo at top of page */
 .icon img.centered {
 	display: block;
 	margin-left: auto;
