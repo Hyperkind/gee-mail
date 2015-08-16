@@ -8,19 +8,23 @@
     window.onload = function(){
         // ALL OF YOUR JAVASCRIPT CODE SHOULD GO HERE. 
         // We have to use window.onload so your JavaScript doesn't execute until the page has loaded and all HTML has been downloaded to your browser
-        // Loads 10 initial GeeMail messages
-        for(var i = 0; i < window.geemails.length; i++) {
-            inbox(window.geemails[i]);
-        };
-        // Header
-        title.innerHTML = "Welcome to GeeMail!"
+
+        
         var table = document.getElementById("tablebody");
-     	function inbox(geemail) {
+     	function inbox(geemail, index) {
      		var content = document.getElementById("tablebody");
      		
      		// Creates the row for each email
      		var row = document.createElement("tr");
      		row.className = ("row");
+            row.ondblclick = function(){
+                var bodyRow = document.getElementById("rowBody" + index);
+                if (bodyRow.style.display == "none"){
+                    bodyRow.style.display = "table-row";
+                } else {
+                    bodyRow.style.display = "none";
+                }
+            };
      		content.appendChild(row);
      		
      		// Used to generate the info for date column
@@ -41,22 +45,35 @@
         	subject.innerHTML = geemail.subject;
         	row.appendChild(subject);
 
+            var row2 = document.createElement("tr");
+            row2.id = "rowBody" + index;
+            row2.style.display = "none";
+            content.appendChild(row2);
+
         	// Used to generate the info for the body column
         	var body = document.createElement("td");
+            body.colSpan = 3;
         	body.className = ("body");
         	body.innerHTML = geemail.body;
-        	row.appendChild(body);
+        	row2.appendChild(body);
+
+            var inboxCount = document.getElementById("inboxNumber");
+            inboxCount.innerHTML = "Inbox Count: " + window.geemails.length;
      	}
 
      	function newMail(){
             var newGeemail = getNewMessage();
-            inbox(newGeemail);
-            geemailsNum++;
-            inboxNumber.innerHTML = geemailsNum;
+            window.geemails.push(newGeemail);
+            inbox(newGeemail, window.geemails.length);
     	}
+
+        // Loads 10 initial GeeMail messages
+        for(var i = 0; i < window.geemails.length; i++) {
+            inbox(window.geemails[i], i + 1);
+        };
+
         // Generates a new email every 5 seconds
         setInterval(newMail, 5000);
-            inboxNumber.innerHTML = geemailsNum;
     };
      
     </script>
@@ -64,21 +81,21 @@
 
 	<body>
 		<div class="container" id="main">
-		    <div id="title">
-	        </div>
-		<h4>Inbox Count:</h4>
-		<table style="width:100%"; cellspacing="10">
+            <div class="icon">
+            <img class="centered" src="http://icons.iconarchive.com/icons/dtafalonso/android-lollipop/512/Gmail-icon.png" />
+            </div>
+		    <div id="title" class="title">Welcome to GeeMail!</div>
+		<h4 id="inboxNumber">Inbox Count:</h4>
+		<table style="width:100%" cellspacing="10">
 			<thead>
 				<tr>
-               
  					<th id="date">Received </br> On:</th>
 					<th id="sender">Sender:</th>
 					<th id="subject">Subject:</th>
-					<th id="body">Body:</th>
 				</tr>
 			</thead>
-			<tbody id="tablebody">
-			</tbody>
+			<tbody id="tablebody"></tbody>
+        </table>
 		</div>
 	</body>
 </html>

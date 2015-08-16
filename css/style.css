@@ -19,3 +19,17 @@ th {
 th, td {
 	padding: 5px;
 }
+.title {
+	font-size: 24;
+	font-weight: bold;
+	text-align: center;
+}
+
+.icon img.centered {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	height: 50px;
+	width: 50px;
+	text-align: auto;
+}
