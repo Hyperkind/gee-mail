@@ -2,104 +2,28 @@
 	<head>
 		<title> Gee-Mail </title>
 		<script src="js/mail-generator.js"></script>
+		<script src="js/geemail-logic.js"></script>
 		<link href="css/style.css" rel="stylesheet" media="screen">
-        <link rel = "shortcut icon" href="http://icons.iconarchive.com/icons/dtafalonso/android-lollipop/512/Gmail-icon.png">
-    <script>
-    window.onload = function(){
-        // ALL OF YOUR JAVASCRIPT CODE SHOULD GO HERE. 
-        // We have to use window.onload so your JavaScript doesn't execute until the page has loaded and all HTML has been downloaded to your browser
-
-        
-        var table = document.getElementById("tablebody");
-     	function inbox(geemail, index) {
-     		var content = document.getElementById("tablebody");
-     		
-     		// Creates the row for each email
-     		var row = document.createElement("tr");
-     		row.className = ("row");
-            // Adds the function to doubleclick an email to view the body of the message
-            row.ondblclick = function(){
-                var bodyRow = document.getElementById("rowBody" + index);
-                if (bodyRow.style.display == "none"){
-                    bodyRow.style.display = "table-row";
-                } else {
-                    bodyRow.style.display = "none";
-                }
-            };
-     		content.appendChild(row);
-     		
-     		// Used to generate the info for date column
-     		var date = document.createElement("td");
-        	date.className = ("date");
-        	date.innerHTML = geemail.date;
-        	row.appendChild(date);
-        	
-        	// Used to generate the info for the sender column
-     		var sender = document.createElement("td");
-     		sender.className = ("sender");
-        	sender.innerHTML = geemail.sender;
-        	row.appendChild(sender);
-        	
-        	// Used to generate the info for the subject column
-        	var subject = document.createElement("td");
-        	subject.className = ("subject");
-        	subject.innerHTML = geemail.subject;
-        	row.appendChild(subject);
-
-            // Creates the body row for each email message
-            var row2 = document.createElement("tr");
-            row2.id = "rowBody" + index;
-            row2.style.display = "none";
-            content.appendChild(row2);
-
-        	// Generates the info for the body column
-        	var body = document.createElement("td");
-            body.colSpan = 3;
-        	body.className = ("body");
-        	body.innerHTML = geemail.body;
-        	row2.appendChild(body);
-
-            // This is for the inbox count
-            var inboxCount = document.getElementById("inboxNumber");
-            inboxCount.innerHTML = "Inbox Count: " + window.geemails.length;
-     	}
-
-            // Function to get new messages
-     	function newMail(){
-            var newGeemail = getNewMessage();
-            window.geemails.push(newGeemail);
-            inbox(newGeemail, window.geemails.length);
-    	}
-
-        // Loads 10 initial GeeMail messages
-        for(var i = 0; i < window.geemails.length; i++) {
-            inbox(window.geemails[i], i + 1);
-        };
-
-        // Generates a new email every 5 seconds
-        setInterval(newMail, 5000);
-    };
-     
-    </script>
+    <link rel = "shortcut icon" href="http://icons.iconarchive.com/icons/dtafalonso/android-lollipop/512/Gmail-icon.png">
 	</head>
 
 	<body>
 		<div class="container" id="main">
-            <div class="icon">
-                <img class="centered" src="http://icons.iconarchive.com/icons/dtafalonso/android-lollipop/512/Gmail-icon.png" />
-            </div>
-		    <div id="title" class="title">Welcome to GeeMail!</div>
-		<p id="inboxNumber">Inbox Count:</p>
-		<table style="width:80%" cellspacing="10">
-			<thead>
-				<tr>
- 					<th id="date">Received On:</th>
-					<th id="sender">Sender:</th>
-					<th id="subject">Subject:</th>
-				</tr>
-			</thead>
-			<tbody id="tablebody"></tbody>
-        </table>
+      <div class="icon">
+        <img class="centered" src="http://icons.iconarchive.com/icons/dtafalonso/android-lollipop/512/Gmail-icon.png" />
+      </div>
+	    <div id="title" class="title">Welcome to GeeMail!</div>
+			<p id="inboxNumber">Inbox Count:</p>
+			<table style="width:80%" cellspacing="10">
+				<thead>
+					<tr>
+	 					<th id="date">Received On:</th>
+						<th id="sender">Sender:</th>
+						<th id="subject">Subject:</th>
+					</tr>
+				</thead>
+				<tbody id="tablebody"></tbody>
+		  </table>
 		</div>
 	</body>
 </html>
